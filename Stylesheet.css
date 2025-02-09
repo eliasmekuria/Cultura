@@ -1,0 +1,6 @@
+.slide-up {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: transform 0.8s ease, opacity 0.8s ease;
+}
