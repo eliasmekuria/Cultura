@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", function () {
         console.log("Form Data:", formData); // Debugging step
 
         try {
-            const response = await fetch("https://script.google.com/macros/s/AKfycbyd_qTqQNoF4sQW4vN0fCPAuTw9C9KQ7sbHwyGHSOjtZAIDWGQ7aADi_nzkq1Fdvfu4/exec", {
+            const response = await fetch("https://script.google.com/macros/s/AKfycbx9CQaA27kREOioQD_NdUlG5ZhXSHdF6h_jpS4kwQ5_HMpHpwoGiV0Gz1mG1SJdeFu7/exec", {
                 method: "POST",
                 mode: "cors",
                 headers: {
