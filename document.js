@@ -1,27 +1,38 @@
 
- document.getElementById("contactForm").addEventListener("submit", async function (event) {
-        event.preventDefault();
+document.getElementById("contactForm").addEventListener("submit", async function (event) {
+    event.preventDefault(); // Prevent default form submission
 
-        const formData = {
-            name: document.getElementById("name").value,
-            email: document.getElementById("email").value,
-            phone: document.getElementById("phone").value,
-            reason: document.getElementById("reason").value
-        };
+    // Collect form data
+    const formData = {
+        name: document.getElementById("name").value,
+        email: document.getElementById("email").value,
+        phone: document.getElementById("phone").value,
+        reason: document.getElementById("reason").value
+    };
 
+    try {
         const response = await fetch("https://script.google.com/macros/s/AKfycbyd_qTqQNoF4sQW4vN0fCPAuTw9C9KQ7sbHwyGHSOjtZAIDWGQ7aADi_nzkq1Fdvfu4/exec", {
             method: "POST",
-            headers: { "Content-Type": "application/json" },
+            mode: "cors", // Ensure CORS isn't blocking it
+            headers: {
+                "Content-Type": "application/json"
+            },
             body: JSON.stringify(formData)
         });
 
+        const result = await response.text(); // Handle response from Google Apps Script
+
         if (response.ok) {
-            alert("Form submitted successfully!");
-            this.reset();
+            alert("Form submitted successfully! ✅");
+            document.getElementById("contactForm").reset(); // Clear form
         } else {
-            alert("Error submitting form.");
+            alert("Error submitting form: " + result);
         }
-    });
+    } catch (error) {
+        console.error("Error:", error);
+        alert("Something went wrong. Please try again.");
+    }
+});
 
 
 
